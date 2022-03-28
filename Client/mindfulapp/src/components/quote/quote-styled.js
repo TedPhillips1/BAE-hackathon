@@ -7,5 +7,5 @@ export const Quote = styled.section`
   padding: 5px;
   text-align: center;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 5px;
 `;
