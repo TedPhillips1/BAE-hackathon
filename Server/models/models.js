@@ -1,3 +1,4 @@
+import query from "../db/index.js"
 
 // Get all quotes
 
@@ -10,12 +11,13 @@ export async function getAllQuotes() {
 
 export async function addJournalEntry(body){
     const response = await query(
-        `INSERT INTO journal (user_email, date, entry)
+        `INSERT INTO journal_entries (user_email, date, rating, entry)
         VALUES (
             $1,
             $2,
-            $3
-        ) RETURNING *;`, [body.userEmail, body.date, body.entry]
+            $3,
+            $4
+        ) RETURNING *;`, [body.user_email, body.date, body.rating, body.entry]
     );
     return response.rows
 }
