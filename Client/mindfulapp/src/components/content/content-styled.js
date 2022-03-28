@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-export const Main = styled.body``;
+export const Content = styled.main``;
