@@ -2,22 +2,26 @@ import React, { useState, useEffect } from "react";
 import MainTextComponent from "../main-text/main-text-component";
 import { Quote } from "./quote-styled";
 
+function ranGen(length) {
+  const num = Math.floor(Math.random() * length);
+  return num;
+}
+
 function QuoteComponent({ text }) {
   const [quote, setQuote] = useState("");
   useEffect(() => {
     async function fetchQuote() {
-      const data = await fetch("https://https://api.quotable.io/random");
+      const data = await fetch("https://type.fit/api/quotes");
       const response = await data.json();
-      console.log(response);
-      setQuote(response);
+      setQuote(response[ranGen(response.length)]);
     }
     fetchQuote();
     console.log(quote);
-  }, [quote]);
+  }, []);
 
   return (
     <Quote>
-      <MainTextComponent text="Never give up!" />
+      <MainTextComponent text={quote.text} />
     </Quote>
   );
 }
