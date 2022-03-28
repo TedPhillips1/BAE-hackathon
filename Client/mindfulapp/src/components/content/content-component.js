@@ -1,12 +1,14 @@
 import QuoteComponent from "../quote/quote-component";
 import CTAComponent from "../cta/cta-component";
 import MoodComponent from "../mood/mood-component";
+import JournalComponent from "../journal/journal-component";
 import { Content } from "./content-styled";
 import { useAuth0 } from "@auth0/auth0-react";
 import ButtonComponent from "../button/button-component";
+import ButtonSectionComponent from "../button-section/button-section-component";
 
 function ContentComponent() {
-  const { user, logout } = useAuth0();
+  const { user } = useAuth0();
   return (
     <Content>
       <QuoteComponent text="Insert Mindful / wellness quote here" />
@@ -14,11 +16,8 @@ function ContentComponent() {
       {user && (
         <>
           <MoodComponent />
-          {/* <JournalComponent /> */}
-          <ButtonComponent
-            onClick={() => logout({ returnTo: window.location.origin })}
-            text="Log Out"
-          />
+          <JournalComponent onChange={() => {}} />
+          <ButtonSectionComponent submit={() => {}} />
         </>
       )}
     </Content>
